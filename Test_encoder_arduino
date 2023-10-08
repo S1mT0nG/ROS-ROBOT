@@ -1,0 +1,100 @@
+#include <ArduinoHardware.h>
+#include <Encoder.h>
+#define EncL1  2 
+#define EncL2  43 
+#define EncR1  19 
+#define EncR2  41 
+#define PWM_L 5
+#define PWM_R 7
+#define EN1_L 32
+#define EN2_L 33
+#define EN1_R 30
+#define EN2_R 31
+Encoder myEncL(EncL1,EncL2);
+Encoder myEncR(EncR1,EncR2);
+
+int PWM = 511; // can change 0-1023  กำหนดความเร็วของมอเตอร์
+
+void setup()
+{
+  pinMode(PWM_L,OUTPUT);
+  pinMode(EN1_L,OUTPUT);
+  pinMode(EN2_L,OUTPUT);
+  pinMode(PWM_R,OUTPUT);
+  pinMode(EN1_R,OUTPUT);
+  pinMode(EN2_R,OUTPUT);
+  
+  //Set Left
+  analogWrite(PWM_L,0);
+    digitalWrite(EN1_L,0);
+  digitalWrite(EN2_L,0);
+
+  //Set Right
+  analogWrite(PWM_R,0);
+  digitalWrite(EN2_R,0);
+  digitalWrite(EN1_R,0);
+
+} 
+
+void loop()
+{
+  //Set Right
+  analogWrite(PWM_R,0);
+  digitalWrite(EN2_R,0);digitalWrite(EN1_R,0);
+  //Set Left
+  analogWrite(PWM_L,0);
+  digitalWrite(EN2_L,0);digitalWrite(EN1_L,0);
+  delay(2000);
+
+  analogWrite(PWM_L,PWM);
+  digitalWrite(EN2_L,0);
+  digitalWrite(EN1_L,0);
+  analogWrite(PWM_R,PWM);
+  digitalWrite(EN2_R,0);
+  digitalWrite(EN1_R,0);
+  delay(1000);
+  
+  //Set Right
+  analogWrite(PWM_R,0);
+  digitalWrite(EN2_R,0);digitalWrite(EN1_R,0);
+  //Set Left
+  analogWrite(PWM_L,0);
+  digitalWrite(EN2_L,0);digitalWrite(EN1_L,0);
+  delay(2000);
+  
+analogWrite(PWM_L,PWM);
+digitalWrite(EN2_L,0);
+digitalWrite(EN1_L,0);
+analogWrite(PWM_R,PWM);
+digitalWrite(EN2_R,0);
+digitalWrite(EN1_R,0);
+  delay(1000);
+  
+  //Set Right
+  analogWrite(PWM_R,0);
+  digitalWrite(EN2_R,0);digitalWrite(EN1_R,0);
+  //Set Left
+  analogWrite(PWM_L,0);
+  digitalWrite(EN2_L,0);digitalWrite(EN1_L,0);
+  delay(2000);
+  
+  analogWrite(PWM_L,PWM);digitalWrite(EN2_L,0);digitalWrite(EN1_L,0);analogWrite(PWM_R,PWM);digitalWrite(EN2_R,0);digitalWrite(EN1_R,0);
+  delay(1000);
+
+  //Set Right
+  analogWrite(PWM_R,0);
+  digitalWrite(EN2_R,0);digitalWrite(EN1_R,0);
+  //Set Left
+  analogWrite(PWM_L,0);
+  digitalWrite(EN2_L,0);digitalWrite(EN1_L,0);
+  delay(2000);
+
+  //Set Right
+  analogWrite(PWM_R,0);
+  digitalWrite(EN2_R,0);digitalWrite(EN1_R,0);
+  //Set Left
+  analogWrite(PWM_L,0);
+  digitalWrite(EN2_L,0);digitalWrite(EN1_L,0);
+  delay(3000);
+  
+}
