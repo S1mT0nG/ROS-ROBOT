@@ -8,7 +8,10 @@
 // #define EN1_R 30
 // #define EN2_R 31
 
-volatile int count = 0;
+
+
+volatile int countL = 0;
+volatile int countR = 0;
 
 void setup() {
 
@@ -21,10 +24,15 @@ void setup() {
   // pinMode(EN2_R,OUTPUT);
 
   //------------------- Setup Encoder -----------------------------
+
+  attachInterrupt(digitalPinToInterrupt(3), checkR_fwd, RISING);  //  Encoder A Phase Motor L  (Yellow Wire)
+  pinMode(3, INPUT_PULLUP);
+  attachInterrupt(digitalPinToInterrupt(2), checkR_rev, RISING);  //  Encoder B Phase Motor L (Green Wire)
   pinMode(2, INPUT_PULLUP);
-  attachInterrupt(digitalPinToInterrupt(2), check, RISING);
-
-
+  attachInterrupt(digitalPinToInterrupt(19), checkL_fwd, RISING);  //  Encoder A Phase Motor R (Yellow Wire)
+  pinMode(19, INPUT_PULLUP);
+  attachInterrupt(digitalPinToInterrupt(18), checkL_rev, RISING);  //  Encoder B Phase Motor R (Green Wire)
+  pinMode(18, INPUT_PULLUP);
 
   //Set Left
   // analogWrite(PWM_L,0);
@@ -42,14 +50,30 @@ void stop() {
   analogWrite(PWM_R, 0);
 }
 
-
-
-void check() {
-  count++;
-  Serial.println(count, DEC);
-}
-
 void loop() {
 
   stop();
+}
+
+
+void checkL_fwd() {
+  countL++;
+  Serial.print("countL:");
+  Serial.println(countL, DEC);
+}
+void checkL_rev() {
+  countL--;
+  Serial.print("countL:");
+  Serial.println(countL, DEC);
+}
+
+void checkR_fwd() {
+  countR++;
+  Serial.print("countR:");
+  Serial.println(countR, DEC);
+}
+void checkR_rev() {
+  countR--;
+  Serial.print("countR:");
+  Serial.println(countR, DEC);
 }
