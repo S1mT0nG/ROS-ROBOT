@@ -3,12 +3,12 @@
 
 #define PWM_L 5
 #define PWM_R 7
-#define EN1_L 32
-#define EN2_L 33
-#define EN1_R 30
-#define EN2_R 31
+// #define EN1_L 32
+// #define EN2_L 33
+// #define EN1_R 30
+// #define EN2_R 31
 
-int PWM = 511; // can change 0-1023  กำหนดความเร็วของมอเตอร์
+
 
 volatile int countL = 0 ;
 volatile int countR = 0 ;
@@ -17,40 +17,45 @@ void setup()
 {
 
   Serial.begin(9600);
-  pinMode(PWM_L,OUTPUT);
-  pinMode(EN1_L,OUTPUT);
-  pinMode(EN2_L,OUTPUT);
-  pinMode(PWM_R,OUTPUT);
-  pinMode(EN1_R,OUTPUT);
-  pinMode(EN2_R,OUTPUT);
+   pinMode(PWM_L,OUTPUT);
+  // pinMode(EN1_L,OUTPUT);
+  // pinMode(EN2_L,OUTPUT);
+   pinMode(PWM_R,OUTPUT);
+  // pinMode(EN1_R,OUTPUT);
+  // pinMode(EN2_R,OUTPUT);
 
 //------------------- Setup Encoder -----------------------------
 
  attachInterrupt(digitalPinToInterrupt(2),checkR_fwd, RISING);
  pinMode(2,INPUT_PULLUP);
-  attachInterrupt(digitalPinToInterrupt(43),checkR_rev, RISING);
- pinMode(43,INPUT_PULLUP);
-  attachInterrupt(digitalPinToInterrupt(19),checkL_fwd, RISING);
- pinMode(19,INPUT_PULLUP);
-  attachInterrupt(digitalPinToInterrupt(41),checkL_rev, RISING);
- pinMode(41,INPUT_PULLUP);
+//   attachInterrupt(digitalPinToInterrupt(43),checkR_rev, RISING);
+//  pinMode(43,INPUT_PULLUP);
+//   attachInterrupt(digitalPinToInterrupt(19),checkL_fwd, RISING);
+//  pinMode(19,INPUT_PULLUP);
+//   attachInterrupt(digitalPinToInterrupt(41),checkL_rev, RISING);
+//  pinMode(41,INPUT_PULLUP);
   
   //Set Left
-  analogWrite(PWM_L,0);
-    digitalWrite(EN1_L,0);
-  digitalWrite(EN2_L,0);
+  // analogWrite(PWM_L,0);
+  //   digitalWrite(EN1_L,0);
+  // digitalWrite(EN2_L,0);
 
-  //Set Right
-  analogWrite(PWM_R,0);
-  digitalWrite(EN2_R,0);
-  digitalWrite(EN1_R,0);
+  // //Set Right
+  // analogWrite(PWM_R,0);
+  // digitalWrite(EN2_R,0);
+  // digitalWrite(EN1_R,0);
 
 } 
+
+void stop() {
+  analogWrite(PWM_L,0);
+   analogWrite(PWM_R,0);
+}
 
 void loop()
 {
 
-  
+   stop();
 }
 
 void checkR_fwd(){
@@ -59,19 +64,19 @@ void checkR_fwd(){
   Serial.println(countR,DEC);
 
 }
-void checkR_rev(){
-  countR--;
-   Serial.print("countR:");
-  Serial.println(countR,DEC);
+// void checkR_rev(){
+//   countR--;
+//    Serial.print("countR:");
+//   Serial.println(countR,DEC);
 
-}
-void checkL_fwd(){
-    countL++;
-     Serial.print("countL:");
-  Serial.println(countL,DEC);
-}
-void checkL_rev(){
-    countL--;
-     Serial.print("countL:");
-  Serial.println(countL,DEC);
-}
+// }
+// void checkL_fwd(){
+//     countL++;
+//      Serial.print("countL:");
+//   Serial.println(countL,DEC);
+// }
+// void checkL_rev(){
+//     countL--;
+//      Serial.print("countL:");
+//   Serial.println(countL,DEC);
+// }
