@@ -47,10 +47,10 @@ void loop()
   delay(2000);
 
   analogWrite(PWM_L,PWM);
-  digitalWrite(EN2_L,0);
+  digitalWrite(EN2_L,1);
   digitalWrite(EN1_L,0);
   analogWrite(PWM_R,PWM);
-  digitalWrite(EN2_R,0);
+  digitalWrite(EN2_R,1);
   digitalWrite(EN1_R,0);
   delay(1000);
   
@@ -62,7 +62,12 @@ void loop()
   digitalWrite(EN2_L,0);digitalWrite(EN1_L,0);
   delay(2000);
   
-  analogWrite(PWM_L,PWM);digitalWrite(EN2_L,0);digitalWrite(EN1_L,0);analogWrite(PWM_R,PWM);digitalWrite(EN2_R,0);digitalWrite(EN1_R,0);
+analogWrite(PWM_L,PWM);
+digitalWrite(EN2_L,0);
+digitalWrite(EN1_L,1);
+analogWrite(PWM_R,PWM);
+digitalWrite(EN2_R,0);
+digitalWrite(EN1_R,1);
   delay(1000);
   
   //Set Right
@@ -74,30 +79,28 @@ void loop()
   delay(2000);
   
   analogWrite(PWM_L,PWM);
+  digitalWrite(EN2_L,1);
   digitalWrite(EN1_L,0);
-  digitalWrite(EN2_L,0);
   analogWrite(PWM_R,PWM);
   digitalWrite(EN2_R,0);
-  digitalWrite(EN1_R,0);
+  digitalWrite(EN1_R,1);
   delay(1000);
 
   //Set Right
   analogWrite(PWM_R,0);
-  digitalWrite(EN2_R,0);
-  digitalWrite(EN1_R,0);
+  digitalWrite(EN2_R,0);digitalWrite(EN1_R,0);
   //Set Left
   analogWrite(PWM_L,0);
-  digitalWrite(EN2_L,0);
-  digitalWrite(EN1_L,0);
+  digitalWrite(EN2_L,0);digitalWrite(EN1_L,0);
   delay(2000);
 
   //Set Right
-  analogWrite(PWM_R,0);
+  analogWrite(PWM_R,PWM);
   digitalWrite(EN2_R,0);
-  digitalWrite(EN1_R,0);
+  digitalWrite(EN1_R,1);
   //Set Left
-  analogWrite(PWM_L,0);
-  digitalWrite(EN2_L,0);
+  analogWrite(PWM_L,PWM);
+  digitalWrite(EN2_L,1);
   digitalWrite(EN1_L,0);
   delay(3000);
   
