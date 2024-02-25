@@ -4,8 +4,8 @@
 #include <std_msgs/Float32.h> 
 #include <Encoder.h>
 
-Encoder myEncL(2, 43);
-Encoder myEncR(19, 41);
+Encoder myEncL(3, 2);
+Encoder myEncR(19, 18);
 long oldPositionL  = 0;
 long oldPositionR  = 0;
 ros::NodeHandle nh;
